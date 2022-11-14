@@ -7,7 +7,6 @@ import numpy as np
 from time import time, sleep
 import autoit
 import pyautogui
-import win32gui, win32ui, win32con
 
 # Templates
 lurebox = cv.imread('lurebox.png')
@@ -62,18 +61,18 @@ while True:
         
     elif catch_max_val >= threshold:
         pyautogui.press('w')
-
+    
     elif box_max_val >= threshold:
-        if box_max_loc[0] > (fish_max_loc[0] - 5):
+        if box_max_loc[0] > (fish_max_loc[0]):
             pyautogui.keyUp('d')
             pyautogui.keyDown('a')
-        elif box_max_loc[0] < (fish_max_loc[0] + 5):
+        elif box_max_loc[0] < (fish_max_loc[0]):
             pyautogui.keyUp('a')
             pyautogui.keyDown('d')
             
     elif strike_max_val >= threshold:
         autoit.mouse_click("left", 404, 512, 1)
-        pyautogui.press('w')
+        pyautogui.press('w', 3)
     
     else:
         pyautogui.moveTo(486, 430)
